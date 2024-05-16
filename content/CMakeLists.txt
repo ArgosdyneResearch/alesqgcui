@@ -16,6 +16,7 @@ qt6_add_qml_module(content
         MissionSelection.qml
         MissionSelectionForm.ui.qml
         POI.ui.qml
+        POI_V1.ui.qml
         ScreenLogin.qml
         ScreenLoginForm.ui.qml
     RESOURCES
@@ -171,10 +172,10 @@ qt6_add_qml_module(content
         ales_icons/common/Common_Gallery.svg
         ales_icons/common/Common_garbage can.png
         ales_icons/common/Common_garbage can.svg
-        ales_icons/common/common_GPS Off.png
-        ales_icons/common/common_GPS Off.svg
-        ales_icons/common/common_GPS ON.png
-        ales_icons/common/common_GPS ON.svg
+        ales_icons/common/common_GPS_Off.png
+        ales_icons/common/common_GPS_Off.svg
+        ales_icons/common/common_GPS_ON.png
+        ales_icons/common/common_GPS_ON.svg
         ales_icons/common/Common_GreyCheck.png
         ales_icons/common/Common_GreyCheck.svg
         ales_icons/common/common_km-h.png
@@ -212,6 +213,9 @@ qt6_add_qml_module(content
         ales_icons/Corridor/Dronedistance.svg
         ales_icons/Corridor/MissionControl.png
         ales_icons/Corridor/MissionControl.svg
+        ales_icons/FirstPage/link.png
+        ales_icons/FirstPage/link.svg
+        ales_icons/FirstPage/main_logo_v1.png
         ales_icons/HippingPOI/altitude.png
         ales_icons/HippingPOI/altitude.svg
         ales_icons/HippingPOI/altitudecheck.png
@@ -227,6 +231,28 @@ qt6_add_qml_module(content
         ales_icons/POI/exampleMap.png
         ales_icons/POI/exampleMap.svg
         ales_icons/POI/mapType.svg
+        ales_icons/POI_V1/back.svg
+        ales_icons/POI_V1/back_ground.png
+        ales_icons/POI_V1/commonSetting.png
+        ales_icons/POI_V1/commonSetting.svg
+        ales_icons/POI_V1/common_Logo.png
+        ales_icons/POI_V1/POI_mini_icon.svg
+        ales_icons/POI_V1/poi_setting.svg
+        ales_icons/POI_V1/route_setting.svg
+        ales_icons/POI_V1/set_cheakpoint_button.svg
+        ales_icons/POI_V1/common/bottom/delete_all.svg
+        ales_icons/POI_V1/common/bottom/mission_rename.svg
+        ales_icons/POI_V1/common/bottom/save_mission.svg
+        ales_icons/POI_V1/common/top/altitude.svg
+        ales_icons/POI_V1/common/top/altitude_fix.svg
+        ales_icons/POI_V1/common/top/battery.svg
+        ales_icons/POI_V1/common/top/distance.svg
+        ales_icons/POI_V1/common/top/home butoon.svg
+        ales_icons/POI_V1/common/top/map tool.svg
+        ales_icons/POI_V1/common/top/obstacle_sensor_off.svg
+        ales_icons/POI_V1/common/top/obstacle_sensor_on.svg
+        ales_icons/POI_V1/common/top/setting.svg
+        ales_icons/POI_V1/common/top/speed.svg
         ales_icons/Rectangular/Arrow.png
         ales_icons/Rectangular/Arrow.svg
         ales_icons/Rectangular/CrossCenter.png

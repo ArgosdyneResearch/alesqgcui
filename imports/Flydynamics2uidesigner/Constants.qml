@@ -3,8 +3,8 @@ import QtQuick 6.5
 import QtQuick.Studio.Application
 
 QtObject {
-    readonly property int width: 1920
-    readonly property int height: 1080
+    readonly property int width: 1596
+    readonly property int height: 950
     readonly property color btnBackgroundColor: "#4DD9D9D9"
     readonly property color btnTextColor: "white"
     readonly property int btnFontsize: 30

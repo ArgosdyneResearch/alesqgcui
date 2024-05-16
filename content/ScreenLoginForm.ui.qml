@@ -24,18 +24,20 @@ Rectangle {
 
     Rectangle {
         id: recLogo
-        width: 319
-        height: 149
+        width: 150
+        height: 150
         color: "black"
         anchors.left: parent.left
         anchors.top: parent.top
-        anchors.leftMargin: 40
-        anchors.topMargin: 40
+        anchors.leftMargin: 10
+        anchors.topMargin: 10
 
         Image {
             id: imgLogo
             anchors.fill: parent
-            source: "ales_icons/waypoint/MainPage/Argosdynelogo.png"
+            source: "ales_icons/FirstPage/main_logo_v1.png"
+            antialiasing: true
+            cache: false
             fillMode: Image.PreserveAspectFit
         }
 
@@ -55,16 +57,16 @@ Rectangle {
         icon.height: 80
         icon.width: 80
         icon.source: "ales_icons/waypoint/MainPage/User.svg"
-        anchors.rightMargin: 71
-        anchors.topMargin: 47
+        anchors.rightMargin: 10
+        anchors.topMargin: 10
     }
 
     RowLayout {
         id: btnRow
-        width: 900
-        height: 244
+        width: 500
+        height: 100
         spacing: 100
-        anchors.bottom: parent.bottom
+        anchors.verticalCenter: parent.verticalCenter
         anchors.bottomMargin: 100
         anchors.horizontalCenter: parent.horizontalCenter
 
@@ -91,12 +93,41 @@ Rectangle {
         width: 365
         height: 94
         anchors.top: parent.top
-        model: ["AQUILA II", "AQUILA 3F"]
+        model: ["AQUILA 2", "AQUILA 3F", "HUMMER"]
         font: Constants.superLargeFont
-        anchors.topMargin: 68
+        anchors.topMargin: 30
         anchors.horizontalCenter: parent.horizontalCenter
         popup.Material.foreground: "gray"
         Material.accent: Constants.backgroundColor
         Material.foreground: "white"
+    }
+
+    RowLayout {
+        width: 200
+        height: 40
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+        anchors.rightMargin: 20
+        spacing: 20
+
+        Image {
+            width: parent.height
+            horizontalAlignment: Image.AlignHCenter
+            verticalAlignment: Image.AlignVCenter
+            Layout.fillHeight: true
+            source: "ales_icons/FirstPage/link.svg"
+            fillMode: Image.Stretch
+            sourceSize.height: 50
+            sourceSize.width: 50
+        }
+        Label {
+            color: "#ddffffff"
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            font: Constants.largeFont
+            text: "How to Connect"
+            verticalAlignment: Text.AlignVCenter
+        }
     }
 }

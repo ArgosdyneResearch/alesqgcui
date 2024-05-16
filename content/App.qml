@@ -7,8 +7,8 @@ Window {
     height: Constants.height
 
     visible: true
-    minimumHeight: 720
-    minimumWidth: 1080
+    minimumHeight: 700
+    minimumWidth: 1000
 
     SwipeView {
         id: swipeView
@@ -20,8 +20,6 @@ Window {
 
         ScreenLogin {
             onMissionClicked: tabBar.currentIndex = 1
-
-
         }
 
         MissionSelection {

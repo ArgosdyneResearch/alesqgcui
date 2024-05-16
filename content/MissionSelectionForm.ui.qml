@@ -23,11 +23,11 @@ Rectangle {
 
     Row {
         id: rowTitle
-        width: 330
-        height: 100
+        width: 250
+        height: 50
 
         anchors.top: parent.top
-        anchors.topMargin: 50
+        anchors.topMargin: 20
         anchors.horizontalCenter: parent.horizontalCenter
 
         spacing: 20
@@ -60,11 +60,11 @@ Rectangle {
         anchors.bottomMargin: 0
         anchors.rightMargin: 20
         anchors.leftMargin: 20
-        anchors.topMargin: 100
+        anchors.topMargin: 50
 
         Text {
             id: textArea
-            height: 100
+            height: 80
             width: parent.width
             color: Constants.btnTextColor
             text: qsTr("New Mission")
@@ -73,11 +73,11 @@ Rectangle {
 
         SwipeView {
             id: swipeView
-            height: 200
+            height: 150
             Layout.fillWidth: true
             antialiasing: true
             Rectangle {
-                height: 200
+                height: 150
                 width: colLayoutMain.width
                 color: "#00000000"
 
@@ -88,7 +88,7 @@ Rectangle {
 
                     BigButton {
                         id: btnCorridor
-                        height: 200
+                        height: 150
                         Layout.fillWidth: true
                         backgroundColor: "#50C4ED"
                         btnLabelText: "Corridor"
@@ -97,7 +97,7 @@ Rectangle {
 
                     BigButton {
                         id: btnPOI
-                        height: 200
+                        height: 150
                         Layout.fillWidth: true
                         btnLabelText: "POI"
                         btnImageSource: "ales_icons/waypoint/MainPage/POI.svg"
@@ -106,7 +106,7 @@ Rectangle {
 
                     BigButton {
                         id: btnHoppingPOI
-                        height: 200
+                        height: 150
                         Layout.fillWidth: true
                         btnLabelText: "Hopping POI"
                         btnImageSource: "ales_icons/waypoint/MainPage/HoppingPOI.svg"
@@ -167,7 +167,7 @@ Rectangle {
         }
         Text {
             id: txtMissionHistory
-            height: 100
+            height: 80
             width: parent.width
             color: Constants.btnTextColor
             text: qsTr("Mission History")
