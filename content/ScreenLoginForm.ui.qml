@@ -72,17 +72,15 @@ Rectangle {
 
         ImageButton {
             id: btnCamera
-            height: btnRow.height
-            width: height * 1.5
-            Layout.fillWidth: true
+            Layout.preferredHeight: btnRow.height
+            Layout.preferredWidth: btnRow.height * 2
             btnLabelText: "Camera"
             btnImageSource: "ales_icons/waypoint/MainPage/Camera.svg"
         }
         ImageButton {
             id: btnMission
-            height: btnRow.height
-            width: height * 1.5
-            Layout.fillWidth: true
+            Layout.preferredHeight: btnRow.height
+            Layout.preferredWidth: btnRow.height * 2
             btnLabelText: "Mission"
             btnImageSource: "ales_icons/waypoint/MainPage/Mission.svg"
         }
@@ -109,17 +107,17 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 20
         anchors.rightMargin: 20
-        spacing: 20
+        spacing: 10
 
         Image {
-            width: parent.height
+            Layout.preferredWidth: parent.height
+            Layout.fillHeight: true
             horizontalAlignment: Image.AlignHCenter
             verticalAlignment: Image.AlignVCenter
-            Layout.fillHeight: true
             source: "ales_icons/FirstPage/link.svg"
             fillMode: Image.Stretch
-            sourceSize.height: 50
-            sourceSize.width: 50
+            sourceSize.height: parent.height
+            sourceSize.width: parent.height
         }
         Label {
             color: "#ddffffff"

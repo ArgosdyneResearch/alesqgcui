@@ -13,8 +13,9 @@ import Flydynamics2uidesigner
 
 Item {
     id: root
-    width: 100
-    height: 50
+    implicitHeight: 50
+    implicitWidth: 150
+
     property alias btnLabelText: btnLabel.text
     property alias btnImageSource: btnImage.source
     property alias backgroundColor: rectangle.color
@@ -26,27 +27,27 @@ Item {
 
         Row {
             id: rowLayout
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.centerIn: parent
             spacing: 10
-            anchors.horizontalCenter: parent.horizontalCenter
 
             Image {
                 id: btnImage
-                height: root.height * 0.6
+                Layout.leftMargin: 20
                 anchors.verticalCenter: parent.verticalCenter
-                width: root.height * 0.6
                 source: "qrc:/qtquickplugin/images/template_image.png"
-                fillMode: Image.PreserveAspectFit
+                sourceSize.height: rectangle.height * 0.6
+                sourceSize.width: rectangle.height * 0.6
+                fillMode: Image.Stretch
             }
 
             Text {
                 id: btnLabel
                 text: qsTr("Text")
                 color: Constants.btnTextColor
-                anchors.verticalCenter: parent.verticalCenter
                 font.pixelSize: Constants.btnFontsize
                 horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignVCenter
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
         }
     }
