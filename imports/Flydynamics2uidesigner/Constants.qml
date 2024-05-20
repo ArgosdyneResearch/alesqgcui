@@ -9,7 +9,7 @@ QtObject {
     readonly property color btnTextColor: "white"
     readonly property int btnFontsize: 30
 
-    //-- The point and pixel font size values are computed at runtime
+    // The point and pixel font size values are computed at runtime
 
     property real defaultFontPointSize:     10
     property real platformFontPointSize:    10
