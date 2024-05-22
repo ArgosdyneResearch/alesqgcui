@@ -12,6 +12,15 @@ Rectangle {
     property double btnFontSize: 20
 
     color: Constants.backgroundColor
+    property alias sliderCameraAngle: sliderCameraAngle
+    property alias sliderDirectionAndSpeed: sliderDirectionAndSpeed
+    property alias cameraAngleGroupVisible: cameraAngleGroup.visible
+    property alias barDirectionAndSpeedVisible: barDirectionAndSpeed.visible
+    property int altitude: 60
+    property int radiusPoi: 5
+    property int gimbalPitch: 0
+    property string directionAndSpeed: "Left-18"
+
     property alias btnDelete: btnDelete
     property alias btnSave: btnSave
     property alias btnRename: btnRename
@@ -534,6 +543,93 @@ Rectangle {
     }
 
     Rectangle {
+        id: cameraAngleGroup
+        width: 200
+        height: parent.height / 1.5
+        visible: false
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: btnGroupRight.left
+        anchors.rightMargin: 50
+        color: "transparent"
+
+        ColumnLayout {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 20
+            spacing: 30
+            RoundButton {
+                text: "30"
+                Layout.preferredHeight: Constants.defaultFontPointSize * 7
+                Layout.preferredWidth: Constants.defaultFontPointSize * 7
+                display: AbstractButton.TextOnly
+                font.pointSize: 20
+                Material.foreground: "white"
+                background: Rectangle {
+                    color: "#B2393939"
+                    radius: Constants.defaultFontPointSize * 7
+                }
+            }
+
+            RoundButton {
+                text: "45"
+                Layout.preferredHeight: Constants.defaultFontPointSize * 7
+                Layout.preferredWidth: Constants.defaultFontPointSize * 7
+                display: AbstractButton.TextOnly
+                font.pointSize: 20
+                Material.foreground: "white"
+                background: Rectangle {
+                    color: "#B2393939"
+                    radius: Constants.defaultFontPointSize * 7
+                }
+            }
+
+            RoundButton {
+                text: "60"
+                Layout.preferredHeight: Constants.defaultFontPointSize * 7
+                Layout.preferredWidth: Constants.defaultFontPointSize * 7
+                display: AbstractButton.TextOnly
+                font.pointSize: 20
+                Material.foreground: "white"
+                background: Rectangle {
+                    color: "#B2393939"
+                    radius: Constants.defaultFontPointSize * 7
+                }
+            }
+        }
+
+        ColumnLayout {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
+            height: parent.height
+            spacing: 0
+            Image {
+                source: "ales_icons/POI_V1/camera_slider_top.svg"
+                fillMode: Image.Stretch
+                sourceSize.height: Constants.defaultFontPointSize * 7
+                sourceSize.width: Constants.defaultFontPointSize * 7
+            }
+            Slider {
+                id: sliderCameraAngle
+                stepSize: 1
+                to: -90
+                from: 90
+                orientation: Qt.Vertical
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                Layout.alignment: Qt.AlignHCenter
+                background: Rectangle {
+                    color: "#4D2B2B2B"
+                }
+            }
+            Image {
+                source: "ales_icons/POI_V1/camera_slider_bottom.svg"
+                sourceSize.height: Constants.defaultFontPointSize * 7
+                sourceSize.width: Constants.defaultFontPointSize * 7
+            }
+        }
+    }
+
+    Rectangle {
         id: btnGroupRight
         height: 300
         width: 80
@@ -636,43 +732,93 @@ Rectangle {
     }
 
     Rectangle {
+        id: barDirectionAndSpeed
+        width: routeStatus.width
+        height: Constants.defaultFontPointSize * 4
+        anchors.bottom: routeStatus.top
+        anchors.bottomMargin: Constants.defaultFontPointSize
+        anchors.horizontalCenter: routeStatus.horizontalCenter
+        color: "#5c5c5c"
+        visible: false
+
+        RowLayout {
+            anchors.fill: parent
+            anchors.margins: Constants.defaultFontPointSize
+            Text {
+                Layout.fillHeight: true
+                text: qsTr("Left")
+                verticalAlignment: Text.AlignVCenter
+                color: "white"
+            }
+
+            Slider {
+                id: sliderDirectionAndSpeed
+                live: true
+                spacing: 0
+                stepSize: 1
+                to: 100
+                from: -100
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+            }
+
+            Text {
+                Layout.fillHeight: true
+                text: qsTr("Right")
+                verticalAlignment: Text.AlignVCenter
+                color: "white"
+            }
+
+            ToolSeparator {
+                Layout.fillHeight: true
+            }
+
+            Text {
+                id: lblDirectionInformation
+                text: qsTr("Left-18km/h")
+                color: "white"
+            }
+        }
+    }
+
+    Rectangle {
         id: routeStatus
         height: 80
         width: 800
         visible: false
         color: "#5c5c5c"
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
+        anchors.bottomMargin: Constants.defaultFontPointSize * 3
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenterOffset: 110
-        anchors.leftMargin: 140
+
         RowLayout {
             anchors.fill: parent
             spacing: 5
 
             Rectangle {
                 Layout.fillHeight: true
-                width: 100
+                Layout.preferredWidth: 100
                 color: "#393838"
                 Text {
                     color: "#ffffff"
                     anchors.fill: parent
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 20
+                    font.pointSize: Constants.platformFontPointSize * 1.5
                     text: "Route"
                 }
             }
 
             Rectangle {
                 Layout.fillHeight: true
-                width: 100
+                Layout.preferredWidth: 100
                 color: "transparent"
                 ColumnLayout {
                     anchors.centerIn: parent
                     Text {
+                        id: text1
                         color: "#fffefe"
-                        text: "60m"
+                        text: altitude + "m"
                         font.pointSize: 15
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     }
@@ -687,13 +833,13 @@ Rectangle {
 
             Rectangle {
                 Layout.fillHeight: true
-                width: 100
+                Layout.preferredWidth: 100
                 color: "transparent"
                 ColumnLayout {
                     anchors.centerIn: parent
                     Text {
                         color: "#fffefe"
-                        text: "5m"
+                        text: radiusPoi + "m"
                         font.pointSize: 15
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     }
@@ -707,13 +853,13 @@ Rectangle {
             }
             Rectangle {
                 Layout.fillHeight: true
-                width: 130
+                Layout.preferredWidth: Constants.defaultFontPointSize * 15
                 color: "transparent"
                 ColumnLayout {
                     anchors.centerIn: parent
                     Text {
                         color: "#fffefe"
-                        text: "Left-18km/h"
+                        text: directionAndSpeed + "km/h"
                         font.pointSize: 15
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     }
@@ -728,13 +874,13 @@ Rectangle {
 
             Rectangle {
                 Layout.fillHeight: true
-                width: 100
+                Layout.preferredWidth: 100
                 color: "transparent"
                 ColumnLayout {
                     anchors.centerIn: parent
                     Text {
                         color: "#fffefe"
-                        text: "45"
+                        text: gimbalPitch
                         font.pointSize: 15
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     }
@@ -756,9 +902,12 @@ Rectangle {
             ToolButton {
                 id: btnExit
                 visible: true
+                icon.height: 70
+                icon.width: 70
+                Layout.preferredHeight: 80
+                Layout.preferredWidth: 80
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
                 display: AbstractButton.IconOnly
-                icon.height: 80
-                icon.width: 80
                 font.pointSize: 20
                 icon.color: "#00000000"
                 icon.source: "ales_icons/POI_V1/exit_back.svg"

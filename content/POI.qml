@@ -11,6 +11,8 @@ POIForm {
         btnGroupBottomVisible = false
         btnCameraSettingVisible = false
         routeStatusVisible = false
+        cameraAngleGroupVisible = false
+        barDirectionAndSpeedVisible = false
 
 
     }
@@ -20,6 +22,8 @@ POIForm {
         btnCameraSettingVisible = true
         btnGroupBottomVisible = false
         routeStatusVisible = true
+        cameraAngleGroupVisible = true
+        barDirectionAndSpeedVisible = true
     }
 
     btnSetCheckpoint.onClicked: {
@@ -33,6 +37,8 @@ POIForm {
         btnGroupBottomVisible = true
         btnCameraSettingVisible = false
         routeStatusVisible = false
+        cameraAngleGroupVisible = false
+        barDirectionAndSpeedVisible = false
     }
 
     btnDelete.onClicked: {
@@ -74,6 +80,19 @@ POIForm {
 
     btnRenameNO.onClicked: {
         renameMissionVisible = false
+    }
+
+    sliderCameraAngle.onValueChanged: {
+        gimbalPitch = sliderCameraAngle.value
+    }
+
+    sliderDirectionAndSpeed.onValueChanged: {
+        var mSpeed = sliderDirectionAndSpeed.value
+        var dir = "Left"
+        if(mSpeed> 0){
+            dir = "Right"
+        }
+        directionAndSpeed =dir+"-"+Math.abs(mSpeed)
     }
 
 }
