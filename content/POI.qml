@@ -34,4 +34,46 @@ POIForm {
         btnCameraSettingVisible = false
         routeStatusVisible = false
     }
+
+    btnDelete.onClicked: {
+        resetMissionVisible = true
+
+    }
+
+    btnResetYES.onClicked: {
+        resetMissionVisible = false
+    }
+
+    btnResetNO.onClicked: {
+        resetMissionVisible = false
+    }
+
+    btnSave.onClicked: {
+
+        saveMissionVisible = true
+
+    }
+
+    btnSaveYES.onClicked: {
+        saveMissionVisible = false
+    }
+
+    btnSaveNO.onClicked: {
+        saveMissionVisible = false
+    }
+
+
+    btnRename.onClicked: {
+        renameMissionVisible = true
+    }
+
+
+    btnRenameYES.onClicked: {
+        renameMissionVisible = false
+    }
+
+    btnRenameNO.onClicked: {
+        renameMissionVisible = false
+    }
+
 }

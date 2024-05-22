@@ -12,6 +12,18 @@ Rectangle {
     property double btnFontSize: 20
 
     color: Constants.backgroundColor
+    property alias btnDelete: btnDelete
+    property alias btnSave: btnSave
+    property alias btnRename: btnRename
+    property alias btnResetYES: btnResetYES
+    property alias btnResetNO: btnResetNO
+    property alias btnSaveYES: btnSaveYES
+    property alias btnSaveNO: btnSaveNO
+    property alias btnRenameYES: btnRenameYES
+    property alias btnRenameNO: btnRenameNO
+    property alias resetMissionVisible: resetMission.visible
+    property alias renameMissionVisible: renameMission.visible
+    property alias saveMissionVisible: saveMission.visible
     property alias routeStatusVisible: routeStatus.visible
     property alias btnExit: btnExit
     property alias btnSetCheckpoint: btnSetCheckpoint
@@ -31,6 +43,248 @@ Rectangle {
             anchors.fill: parent
             source: "ales_icons/POI_V1/back_ground.png"
             fillMode: Image.Stretch
+        }
+    }
+
+    Rectangle {
+        id: resetMission
+        anchors.centerIn: parent
+        width: rootPoi.width / 4
+        height: rootPoi.height / 4
+        color: "#3c3737"
+        radius: 5
+        visible: false
+        Rectangle {
+            width: resetMission.width
+            height: resetMission.height / 4
+            color: "black"
+            radius: 5
+            Text {
+                anchors.centerIn: parent
+                font.pixelSize: Constants.defaultFontPointSize * 2
+                color: "#ffffff"
+                text: qsTr("INFORMATION")
+            }
+        }
+
+        Text {
+            anchors.centerIn: parent
+            font.pixelSize: Constants.defaultFontPointSize * 2
+            color: "#ffffff"
+            text: qsTr("Are you sure to reset the mission?")
+        }
+
+        RowLayout {
+
+            width: parent.width
+            height: parent.height / 5
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0
+            spacing: 10
+
+            Button {
+                id: btnResetNO
+                text: "NO"
+                Layout.preferredWidth: resetMission.width / 2.5
+                display: AbstractButton.TextOnly
+                Layout.fillHeight: true
+                Layout.alignment: Qt.AlignHCenter
+                background: Rectangle {
+                    color: "transparent"
+                    border.color: "grey"
+                }
+                Material.foreground: "white"
+            }
+            Button {
+                id: btnResetYES
+                text: "YES"
+                Layout.preferredWidth: resetMission.width / 2.5
+                display: AbstractButton.TextOnly
+                Layout.fillHeight: true
+                Layout.alignment: Qt.AlignHCenter
+                background: Rectangle {
+                    color: "transparent"
+                    border.color: "grey"
+                }
+                Material.foreground: "white"
+            }
+        }
+    }
+
+    Rectangle {
+        id: saveMission
+        anchors.centerIn: parent
+        width: rootPoi.width / 4
+        height: rootPoi.height / 4
+        color: "#3c3737"
+        radius: 5
+        visible: false
+        Rectangle {
+            id: titleBar
+            width: saveMission.width
+            height: saveMission.height / 4
+            color: "black"
+            radius: 5
+            Text {
+                anchors.centerIn: parent
+                font.pixelSize: Constants.defaultFontPointSize * 2
+                color: "#ffffff"
+                text: qsTr("Save")
+            }
+        }
+
+        Rectangle {
+            anchors.top: titleBar.bottom
+            anchors.bottom: bottomBar.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+            color: "transparent"
+            ColumnLayout {
+                anchors.centerIn: parent
+                width: parent.width - 20
+                spacing: 20
+                Text {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: Constants.defaultFontPointSize * 2
+                    font.pixelSize: Constants.defaultFontPointSize * 2
+                    color: "#ffffff"
+                    text: qsTr("Are you sure to save?")
+                }
+                TextField {
+                    color: "#000000"
+                    Layout.preferredHeight: Constants.defaultFontPointSize * 4
+                    Layout.fillHeight: false
+                    Layout.fillWidth: true
+                    text: "New Mission 1"
+
+                    background: Rectangle {}
+                }
+            }
+        }
+
+        RowLayout {
+            id: bottomBar
+            width: parent.width
+            height: parent.height / 5
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0
+            spacing: 10
+
+            Button {
+                id: btnSaveNO
+                text: "NO"
+                Layout.preferredWidth: saveMission.width / 2.5
+                display: AbstractButton.TextOnly
+                Layout.fillHeight: true
+                Layout.alignment: Qt.AlignHCenter
+                background: Rectangle {
+                    color: "transparent"
+                    border.color: "grey"
+                }
+                Material.foreground: "white"
+            }
+            Button {
+                id: btnSaveYES
+                text: "YES"
+                Layout.preferredWidth: saveMission.width / 2.5
+                display: AbstractButton.TextOnly
+                Layout.fillHeight: true
+                Layout.alignment: Qt.AlignHCenter
+                background: Rectangle {
+                    color: "transparent"
+                    border.color: "grey"
+                }
+                Material.foreground: "white"
+            }
+        }
+    }
+
+    Rectangle {
+        id: renameMission
+        anchors.centerIn: parent
+        width: rootPoi.width / 4
+        height: rootPoi.height / 4
+        color: "#3c3737"
+        radius: 5
+        visible: false
+        Rectangle {
+            id: titleBarRename
+            width: renameMission.width
+            height: renameMission.height / 4
+            color: "black"
+            radius: 5
+            Text {
+                anchors.centerIn: parent
+                font.pixelSize: Constants.defaultFontPointSize * 2
+                color: "#ffffff"
+                text: qsTr("Rename")
+            }
+        }
+
+        Rectangle {
+            color: "transparent"
+            anchors.top: titleBarRename.bottom
+            anchors.bottom: bottomBarRename.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+
+            ColumnLayout {
+                anchors.centerIn: parent
+                width: parent.width - 20
+                spacing: 20
+                Text {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: Constants.defaultFontPointSize * 2
+                    font.pixelSize: Constants.defaultFontPointSize * 2
+                    color: "#ffffff"
+                    text: qsTr("Are you sure to rename?")
+                }
+                TextField {
+                    color: "#000000"
+                    Layout.preferredHeight: Constants.defaultFontPointSize * 4
+                    Layout.fillHeight: false
+                    Layout.fillWidth: true
+                    text: "New Mission 1"
+
+                    background: Rectangle {}
+                }
+            }
+        }
+
+        RowLayout {
+            id: bottomBarRename
+            width: parent.width
+            height: parent.height / 5
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0
+            spacing: 10
+
+            Button {
+                id: btnRenameNO
+                text: "NO"
+                Layout.preferredWidth: renameMission.width / 2.5
+                display: AbstractButton.TextOnly
+                Layout.fillHeight: true
+                Layout.alignment: Qt.AlignHCenter
+                background: Rectangle {
+                    color: "transparent"
+                    border.color: "grey"
+                }
+                Material.foreground: "white"
+            }
+            Button {
+                id: btnRenameYES
+                text: "YES"
+                Layout.preferredWidth: renameMission.width / 2.5
+                display: AbstractButton.TextOnly
+                Layout.fillHeight: true
+                Layout.alignment: Qt.AlignHCenter
+                background: Rectangle {
+                    color: "transparent"
+                    border.color: "grey"
+                }
+                Material.foreground: "white"
+            }
         }
     }
 
@@ -124,6 +378,7 @@ Rectangle {
                 }
             }
         }
+
         Rectangle {
             height: parent.height
             anchors.left: recSelection.right
@@ -241,6 +496,7 @@ Rectangle {
             }
 
             ToolButton {
+                id: btnDelete
                 Layout.fillHeight: true
                 display: AbstractButton.IconOnly
                 icon.height: 60
@@ -252,6 +508,7 @@ Rectangle {
             }
 
             ToolButton {
+                id: btnSave
                 Layout.fillHeight: true
                 display: AbstractButton.IconOnly
                 icon.height: 60
@@ -263,6 +520,7 @@ Rectangle {
             }
 
             ToolButton {
+                id: btnRename
                 Layout.fillHeight: true
                 display: AbstractButton.IconOnly
                 icon.height: 60
