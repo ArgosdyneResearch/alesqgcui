@@ -618,7 +618,29 @@ Rectangle {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter
                 background: Rectangle {
+                    //                    x: sliderCameraAngle.leftPadding
+                    //                       + sliderCameraAngle.availableWidth / 2 - width / 2
+                    //                    y: sliderCameraAngle.topPadding
+                    //                    implicitWidth: 4
+                    //                    implicitHeight: 200
+                    //                    width: sliderCameraAngle.availableWidth
+                    //                    height: sliderCameraAngle.availableHeight
                     color: "#4D2B2B2B"
+                }
+
+                handle: Rectangle {
+
+                    x: sliderCameraAngle.leftPadding
+                       + sliderCameraAngle.availableWidth / 2 - width / 2
+                    y: sliderCameraAngle.topPadding + sliderCameraAngle.visualPosition
+                       * (sliderCameraAngle.availableHeight - height)
+                    implicitWidth: 26
+                    implicitHeight: 26
+                    width: sliderCameraAngle.availableWidth
+                    height: sliderCameraAngle.availableWidth
+                    radius: 0
+                    color: sliderCameraAngle.pressed ? "#f0f0f0" : "#f6f6f6"
+                    border.color: "#bdbebf"
                 }
             }
             Image {
@@ -760,6 +782,22 @@ Rectangle {
                 from: -100
                 Layout.fillHeight: true
                 Layout.fillWidth: true
+                background: Rectangle {
+                    x: sliderDirectionAndSpeed.leftPadding
+                    y: sliderDirectionAndSpeed.topPadding
+                       + sliderDirectionAndSpeed.availableHeight / 2 - height / 2
+                    implicitHeight: 5
+                    implicitWidth: 200
+                    height: implicitHeight
+                    width: sliderDirectionAndSpeed.availableWidth
+                    Rectangle {
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        width: 5
+                        height: parent.height * 4
+                        color: "gray"
+                    }
+                }
             }
 
             Text {
@@ -775,7 +813,8 @@ Rectangle {
 
             Text {
                 id: lblDirectionInformation
-                text: qsTr("Left-18km/h")
+                Layout.preferredWidth: 80
+                text: directionAndSpeed + "km/h"
                 color: "white"
             }
         }
